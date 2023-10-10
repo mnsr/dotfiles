@@ -1,3 +1,8 @@
+------------------------------------------
+-- WEZTERM CONFIG ------------------------
+-- github.com/mnsr/dotfiles --------------
+------------------------------------------
+
 -- Pull in the wezterm API
 local wezterm = require('wezterm')
 
@@ -30,8 +35,8 @@ config.line_height = 1.4
 config.bold_brightens_ansi_colors = true
 
 -- Window
-config.initial_cols = 110
-config.initial_rows = 30
+config.initial_cols = 160
+config.initial_rows = 60
 config.macos_window_background_blur = 30
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_decorations = 'RESIZE'
