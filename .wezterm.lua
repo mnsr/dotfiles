@@ -15,7 +15,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
+-- General
 config.window_close_confirmation = 'AlwaysPrompt'
 config.front_end = 'WebGpu' -- IMPORTANT on macOS
 config.audible_bell = 'Disabled'
@@ -56,10 +56,6 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
--- config.window_frame = {
--- 	font = wezterm.font("Pragmata Pro", { weight = "Bold" }),
--- 	font_size = 12.0,
--- }
 
 -- Theme
 local customScheme = wezterm.color.get_builtin_schemes()['Catppuccin Mocha']
@@ -72,9 +68,9 @@ config.color_schemes = {
 }
 config.color_scheme = 'OLEDppuccin'
 
--- *************************************************
+--------------------------------------------------
 -- Keybinds																				 *
--- *************************************************
+--------------------------------------------------
 local act = wezterm.action
 
 local tmuxLeader = act.SendKey({ key = 'a', mods = 'CTRL' })
@@ -88,6 +84,7 @@ local assignKey = function(key, mod, action)
   }
 end
 
+-- helper fn for tmux key binds
 local assignMultipleKey = function(key, mod, send, sendKey)
   local action = act.Multiple({
     tmuxLeader,
@@ -97,6 +94,7 @@ local assignMultipleKey = function(key, mod, send, sendKey)
   return assignKey(key, mod, action)
 end
 
+-- Load keybinds
 config.keys = {
   assignKey('v', 'CMD', act.PasteFrom('Clipboard')), -- allow paste
   -----------------------------------------
@@ -114,7 +112,7 @@ config.keys = {
   assignMultipleKey('H', 'CMD|SHIFT', 'p'), -- Previous Window
   assignMultipleKey('L', 'CMD|SHIFT', 'n'), -- Next Window
   -----------------------------------------
-  assignMultipleKey(':', 'CMD|SHIFT', ':'), -- Commands
+  assignMultipleKey(':', 'CMD|SHIFT', ':'), -- TMUX Commands
   -----------------------------------------
   -- TMUX LIST WINDOWS --------------------
   -----------------------------------------
@@ -135,9 +133,22 @@ config.keys = {
     'CMD|SHIFT',
     act.SplitVertical({ domain = 'CurrentPaneDomain' })
   ),
-  assignKey('Tab', 'ALT', act.ActivatePaneDirection('Next')),
+  assignKey('Tab', 'ALT', act.ActivatePaneDirection('Next')), -- switch between splits
   assignKey('w', 'CMD', act.CloseCurrentTab({ confirm = true })), -- confirmation close
   assignKey('w', 'CMD', act.CloseCurrentPane({ confirm = true })), -- confirmation close
+  -----------------------------------------
+  -- VIM
+  -----------------------------------------
+  assignKey( -- Comment shortcut for vim
+    '/',
+    'CMD',
+    act.Multiple({
+      act.SendKey({ key = ' ' }),
+      act.SendKey({ key = 'g' }),
+      act.SendKey({ key = 'c' }),
+      act.SendKey({ key = 'c' }),
+    })
+  ),
 }
 
 -- and finally, return the configuration to wezterm
