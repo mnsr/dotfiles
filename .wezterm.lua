@@ -16,22 +16,46 @@ if wezterm.config_builder then
 end
 
 -- General
+-- config.debug_key_events = true
+config.allow_win32_input_mode = true
 config.window_close_confirmation = 'AlwaysPrompt'
-config.front_end = 'WebGpu' -- IMPORTANT on macOS
+config.front_end = 'WebGpu' -- IMPORTANT on macOS to enable Metal
+config.prefer_egl = true --https://wezfurlong.org/wezterm/config/lua/config/prefer_egl.html?h=prefer_egl
 config.audible_bell = 'Disabled'
+-- config.dpi = 144.0
 
 -- Fonts
 config.font = wezterm.font_with_fallback({
-  -- { family = "JetBrains Mono", weight = "Medium" },
-  { family = 'Pragmata Pro', weight = 'Medium' },
-  { family = 'Symbols Nerd Font Mono', scale = 0.75 },
+  -- {
+  --   family = 'Operator Mono Lig',
+  --   weight = 'Medium',
+  --   stretch = 'Expanded',
+  --   harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
+  -- },
+  -- {
+  --   family = 'JetBrains Mono',
+  --   weight = 'DemiBold',
+  --   stretch = 'Expanded',
+  --   harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
+  -- },
+  {
+    family = 'Pragmata Pro',
+    weight = 'DemiBold',
+    stretch = 'Expanded',
+    harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
+  },
+  -- { family = 'Symbols Nerd Font Mono', scale = 0.75 },
 })
-config.font_size = 17.0 -- PragmataPro
--- config.font_antialias = "Subpixel"
-config.freetype_load_target = 'Normal'
-config.freetype_load_flags = 'NO_HINTING'
+
+-- config.font_size = 20.0 -- PragmataPro
+-- config.line_height = 1.4 -- PragmataPro
+config.line_height = 1.25 -- JetBrainsMono
+config.font_size = 19.0 -- OperatorMono
+-- config.line_height = 1.1 -- JetBrainsMono
+-- config.font_size = 16.0 -- JetBrainsMono
+config.freetype_load_target = 'Normal' -- HorizontalLcd|Normal|VerticalLcd|Mono|Light
+config.freetype_load_flags = 'DEFAULT' --'NO_HINTING|FORCE_AUTOHINT|DEFAULT|NO_AUTOHINT|NO_BITMAP'
 config.cell_width = 0.9
-config.line_height = 1.4
 config.bold_brightens_ansi_colors = true
 
 -- Window
@@ -111,6 +135,8 @@ config.keys = {
   assignMultipleKey('l', 'CMD', 'RightArrow'), -- Right
   assignMultipleKey('H', 'CMD|SHIFT', 'p'), -- Previous Window
   assignMultipleKey('L', 'CMD|SHIFT', 'n'), -- Next Window
+  assignMultipleKey('RightArrow', 'CMD|SHIFT', ')'), -- Next Session
+  assignMultipleKey('LeftArrow', 'CMD|SHIFT', '('), -- Next Session
   -----------------------------------------
   assignMultipleKey(':', 'CMD|SHIFT', ':'), -- TMUX Commands
   -----------------------------------------

@@ -1,0 +1,33 @@
+# Ghostty.
+
+# fonts
+#font-family = Fantasque Sans Mono
+font-family = Agave Nerd Font Mono 
+font-size = 21
+font-thicken = true
+font-thicken-strength = 255
+adjust-cell-height = 5
+
+# style
+theme = rose-pine
+#theme = GruvboxDarkHard
+#theme = rose-pine
+mouse-hide-while-typing = true
+cursor-style = block
+
+# window
+background-opacity = 0.94
+background-blur = true
+shell-integration-features = no-cursor,sudo,no-title
+macos-titlebar-style = transparent
+window-title-font-family = Pragmata Pro Bold
+window-inherit-font-size = false
+window-padding-balance = true
+window-colorspace = "display-p3"
+window-save-state = always
+window-vsync = true
+window-width = 148
+window-height = 46
+
+#other
+copy-on-select = clipboard
