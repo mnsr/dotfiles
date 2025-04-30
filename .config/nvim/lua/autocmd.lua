@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePost', 'FileWritePost' }, {
     homeFolder .. '/.tmux.conf',
     homeFolder .. '/.wezterm.lua',
     homeFolder .. '/.config/nvim/**/*',
+    homeFolder .. '/.config/git/config',
     homeFolder .. '/.config/ghostty/*',
   },
   callback = function()

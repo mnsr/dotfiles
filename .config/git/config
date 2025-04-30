@@ -1,0 +1,78 @@
+# ~/.config/git/config
+[user]
+  name = Mansoor
+  email = mansoorm@gmail.com
+
+[core]
+  compression = 9
+  whitespace = error
+  preloadindex = true
+
+[advice]
+  addEmptyPathSpec = false
+  pushNonFastForward = false
+  statusHints = false
+
+[url "git@github.com"]
+  insteadOf = "gh:"
+
+[url "git@github.com:mnsr"]
+  insteadOf = "mnsr:"
+
+[init]
+  defaultBranch = "dev"
+
+[push]
+  autoSetupRemote = true
+  current = true
+  followTags = true
+
+[pull]
+  default = current
+  rebase = true
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+[log]
+  abbrevCommit = true
+  graphColors = blue,yellow,cyan,magenta,green,red
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = -taggerdate
+
+[pager]
+  branch = false
+  tag = false
+
+# Colors
+[color "blame"]
+  highlightRecent = black bold,1 year ago,white,1 month ago,default,7 days ago,blue
+
+[color "branch"]
+  current  = magenta
+  local    = default
+  remote   = yellow
+  upstream = green
+  plain    = blue
+
+[color "diff"]
+  meta       = black bold
+  frag       = magenta
+  context    = white
+  whitespace = yellow reverse
+
+[color "decorate"]
+  HEAD = red
+  branch = blue
+  tag = yellow
+  remoteBranch = magenta

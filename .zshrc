@@ -82,11 +82,15 @@ alias eapp="open /Applications"
 alias emono="open ~/Development/AA_Apps/"
 
 # git aliases
+alias ga="git add"
 alias gaa="git add *"
-alias gp="git pull"
-alias gs="git status"
+alias gu="git pull"
+alias gp="git push"
+alias gpb="git push --set-upstream origin $1"
+alias gco='git checkout'
+alias gs="git status --short"
 alias gitconf="git config --edit --global"
-alias git-publish="git push --set-upstream origin $1"
+alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
 
 # tmux aliases
 alias tnew="tmux new -s $1"
