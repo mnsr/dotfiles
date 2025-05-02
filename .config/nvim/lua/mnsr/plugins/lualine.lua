@@ -1,3 +1,8 @@
+-- lualine.nvim : https://github.com/nvim-lualine/lualine.nvim
+--+-------------------------------------------------+
+--| A | B | C                             X | Y | Z |
+--+-------------------------------------------------+
+--
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -5,70 +10,57 @@ return {
     local lualine = require('lualine')
     local lazy_status = require('lazy.status') -- to configure lazy pending updates count
 
-    local colors = {
-      blue = '#65D1FF',
-      green = '#3EFFDC',
-      violet = '#FF61EF',
-      yellow = '#FFDA7B',
-      red = '#FF4A4A',
-      fg = '#c3ccdc',
-      bg = '#112638',
-      inactive_bg = '#2c3043',
-    }
-
-    local my_lualine_theme = {
-      normal = {
-        a = { bg = colors.blue, fg = colors.bg, gui = 'bold' },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      insert = {
-        a = { bg = colors.green, fg = colors.bg, gui = 'bold' },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      visual = {
-        a = { bg = colors.violet, fg = colors.bg, gui = 'bold' },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      command = {
-        a = { bg = colors.yellow, fg = colors.bg, gui = 'bold' },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      replace = {
-        a = { bg = colors.red, fg = colors.bg, gui = 'bold' },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      inactive = {
-        a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = 'bold' },
-        b = { bg = colors.inactive_bg, fg = colors.semilightgray },
-        c = { bg = colors.inactive_bg, fg = colors.semilightgray },
-      },
-    }
-
-    -- configure lualine with modified theme
     lualine.setup({
       options = {
+        icons_enabled = true,
         theme = 'auto',
-        -- theme = 'catppuccin',
+        -- component_separators = { left = '|', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'NvimTree', 'NvimTree_1' },
+      },
+      globalstatus = false,
+      always_show_tabline = false,
+      always_divide_middle = true,
+      winbar = {
+        lualine_a = {
+          {
+            'buffers',
+            show_filename_only = true,
+            mode = 0,
+            show_modified_status = true,
+            icons_enabled = false,
+          },
+
+        },
       },
       sections = {
         lualine_a = {
           {
             'mode',
-            show_filename_only = true,
-            hide_filename_extension = false,
-            show_modified_status = true,
-            -- mode = 0, -- shows  buffer name
+            icons_enabled = true,
+            padding = 2,
           },
         },
         lualine_c = {
           { 'filename', path = 1 },
         },
         lualine_x = {
+          {
+            'lsp_status',
+            icon = '', -- f013
+            symbols = {
+              -- Standard unicode symbols to cycle through for LSP progress:
+              spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+              -- Standard unicode symbol for when LSP is done:
+              done = '✓',
+              -- Delimiter inserted between LSP names:
+              separator = ' ',
+            },
+            -- List of LSP names to ignore (e.g., `null-ls`):
+            ignore_lsp = {},
+          }
+        },
+        lualine_y = {
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,

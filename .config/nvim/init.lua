@@ -8,6 +8,7 @@ else
   require('mnsr.core')
   require('mnsr.core.keymaps')
   require('mnsr.lazy')
+  require('mnsr.after.extras')
   require('mnsr.after.keymaps')
   require('autocmd')
 end

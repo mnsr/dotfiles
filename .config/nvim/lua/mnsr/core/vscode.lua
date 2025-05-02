@@ -7,19 +7,21 @@ end
 cmdheight = 1
 vsCall('<TAB>', 'workbench.action.nextEditorInGroup')
 vsCall('<S-TAB>', 'workbench.action.previousEditorInGroup')
+vsCall('<C-k>', 'workbench.action.navigateUp')
+vsCall('<C-j>', 'workbench.action.navigateDown')
 vsCall('<C-h>', 'workbench.action.navigateLeft')
 vsCall('<C-l>', 'workbench.action.navigateRight')
 vsCall('u', 'undo')
 vsCall('<C-r>', 'redo')
-vsCall('<leader>nf', 'explorer.newFile') -- jump to matching bracket
-vsCall('<leader>]', 'editor.action.jumpToBracket') -- jump to matching bracket
-vsCall('<leader>rn', 'editor.action.changeAll') -- rename
+vsCall('<leader>nf', 'explorer.newFile')             -- jump to matching bracket
+vsCall('<leader>]', 'editor.action.jumpToBracket')   -- jump to matching bracket
+vsCall('<leader>rn', 'editor.action.changeAll')      -- rename
 vsCall('<leader>snip', 'workbench.action.openSnippets')
 vsCall('<leader>th', 'workbench.action.selectTheme') -- theme selection
 vsCall('<leader>wv', 'workbench.action.splitEditor') -- split editor
 
 -- Sidebar
-vsCall('<leader>ff', 'workbench.action.focusSideBar')
+vsCall('<leader>ff', 'workbench.action.quickOpen')
 vsCall('<leader>ft', 'workbench.action.toggleSidebarVisibility')
 
 -- vim

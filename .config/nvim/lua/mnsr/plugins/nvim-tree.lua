@@ -19,7 +19,7 @@ return {
     -- configure nvim-tree
     nvimtree.setup({
       view = {
-        width = 35,
+        width = 40,
         relativenumber = true,
       },
       -- change folder arrow icons
@@ -36,6 +36,11 @@ return {
           },
         },
       },
+      tab = {
+        sync = {
+          close = true
+        }
+      },
       -- disable window_picker for
       -- explorer to work well with
       -- window splits
@@ -44,6 +49,7 @@ return {
           window_picker = {
             enable = false,
           },
+          --quit_on_open = true
         },
       },
       filters = {

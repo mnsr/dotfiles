@@ -1,14 +1,34 @@
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  desc = "Auto format before save",
-  pattern = { "*.ts", "*.tsx", "*.lua", "*.js", "*.html" },
+vim.api.nvim_create_autocmd({ "BufDelete" }, {
+  desc = "Close NVIM Tree on buffer delete",
+  pattern = "*",
+  callback = function()
+    vim.cmd.NvimTreeClose()
+  end
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    vim.lsp.buf.format()
-    require('conform').format({ bufnr = args.buf })
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then return end
+
+    ---@diagnostic disable-next-line: missing-parameter
+    if client.supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+        desc = "Auto format before save",
+        -- pattern = { "*.ts", "*.tsx", "*.lua", "*.js", "*.html" },
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+          -- require('conform').format({ bufnr = args.buf })
+        end
+      })
+    end
   end
 })
 
 local homeFolder = vim.fn.expand('~')
 
+-- For syncing dotfiles only. Should not be run for anything other than that
 vim.api.nvim_create_autocmd({ 'BufWritePost', 'FileWritePost' }, {
   desc = "Auto update dotfiles repo on change.",
   group = vim.api.nvim_create_augroup('dotfiles', { clear = true }),

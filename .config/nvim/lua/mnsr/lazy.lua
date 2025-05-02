@@ -15,7 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- MNSR Plugins
 local imports = {
-  { import = 'mnsr.plugins.colorscheme' },
+  { import = 'mnsr.plugins.colors.rose-pine' },
+  -- { import = 'mnsr.plugins.colorscheme' },
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
@@ -30,7 +31,7 @@ local imports = {
   { import = 'mnsr.plugins.telescope' },
   { import = 'mnsr.plugins.telescope-dir' },
   { import = 'mnsr.plugins.blankline' },
-  { import = 'mnsr.plugins.bufferline' },
+  -- { import = 'mnsr.plugins.bufferline' },
   { import = 'mnsr.plugins.comments' },
   { import = 'mnsr.plugins.flash' },
   { import = 'mnsr.plugins.formatting' },
@@ -38,11 +39,14 @@ local imports = {
   { import = 'mnsr.plugins.illuminate' },
   { import = 'mnsr.plugins.lazygit' },
   { import = 'mnsr.plugins.lualine' },
+  { import = 'mnsr.plugins.oil' },
+  { import = 'mnsr.plugins.snipe' },
+  { import = 'mnsr.plugins.database' },
+  -- { import = 'mnsr.plugins.harpoon' },
   { import = 'mnsr.plugins.session' },
   { import = 'mnsr.plugins.tint' },
   { import = 'mnsr.plugins.todo-comments' },
   { import = 'mnsr.plugins.which-key' },
-  { import = 'mnsr.plugins.colors.rose-pine' },
 }
 
 -- MNSR Settings

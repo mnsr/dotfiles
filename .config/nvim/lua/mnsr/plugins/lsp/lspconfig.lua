@@ -10,8 +10,17 @@ return {
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
-    -- Additional lua configuration, makes nvim stuff amazing!
-    'folke/neodev.nvim',
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
   },
   config = function()
     -- [[ Configure LSP ]]
@@ -32,7 +41,7 @@ return {
       nmap('<leader>rn', lspBuf.rename, '[R]e[n]ame')
       nmap('<leader>ca', lspBuf.code_action, '[C]ode [A]ction')
 
-      nmap('gd', '<cmd>tab split | lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition')
+      nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', '[G]oto [D]efinition')
       nmap('gr', builtin.lsp_references, '[G]oto [R]eferences')
       nmap('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
       nmap('<leader>D', lspBuf.type_definition, 'Type [D]efinition')
@@ -84,7 +93,7 @@ return {
     }
 
     -- Setup neovim lua configuration
-    require('neodev').setup()
+    -- require('neodev').setup()
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
     local capabilities = vim.lsp.protocol.make_client_capabilities()

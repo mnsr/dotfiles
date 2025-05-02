@@ -33,7 +33,7 @@ opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 
 -- clipboard
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus") -> use "+p instead
 opt.undofile = true
 
 -- split windows
@@ -50,7 +50,9 @@ opt.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 opt.completeopt = "menuone,preview"
 
-opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+opt.swapfile = false
 
 api.nvim_set_hl(0, "LineNr", { fg = "white" })
 api.nvim_set_hl(0, "NormalNC", { bg = 0, ctermbg = "none" })

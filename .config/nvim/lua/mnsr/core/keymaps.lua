@@ -11,6 +11,9 @@ km.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- clear search highlights
 km.set('n', '<leader>nh', ':nohl<CR>', { desc = '[N]o [H]ighlights' })
 
+-- Save file shortcut
+km.set({ 'n', 'v' }, '<C-s>', '<cmd>w<CR>', { desc = '[S]ave File', silent = true })
+
 -- Window/workspace management
 km.set('n', '<leader>wv', '<C-w>v', { desc = '[W]orkspace split [V]ertically' })
 km.set('n', '<leader>wh', '<C-w>s', { desc = '[W]orkspace split [H]orizontally' })
