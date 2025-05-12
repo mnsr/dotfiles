@@ -17,4 +17,15 @@ return {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
+  {
+    'tpope/vim-dadbod',
+    opt = true,
+    requires = {
+      'kristijanhusak/vim-dadbod-ui',
+      'kristijanhusak/vim-dadbod-completion'
+    },
+    config = function()
+      require("config.dadbod").setup()
+    end
+  }
 }

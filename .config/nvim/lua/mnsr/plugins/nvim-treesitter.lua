@@ -22,6 +22,7 @@ return {
         autotag = {
           enable = true,
         },
+        -- sync_install = true,
         -- ensure these language parsers are installed
         ensure_installed = {
           'json',
@@ -31,6 +32,7 @@ return {
           'yaml',
           'html',
           'css',
+          'sql',
           -- 'prisma',
           'markdown',
           'markdown_inline',

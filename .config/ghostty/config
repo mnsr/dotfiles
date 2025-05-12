@@ -3,6 +3,7 @@
 # fonts
 #font-family = Fantasque Sans Mono
 font-family = Agave Nerd Font Mono 
+# font-family = Essential PragmataPro
 font-size = 21
 font-thicken = true
 font-thicken-strength = 255
@@ -28,6 +29,7 @@ window-save-state = always
 window-vsync = true
 window-width = 148
 window-height = 46
+# custom-shader = shaders/bloom025.glsl
 
 #other
 copy-on-select = clipboard
